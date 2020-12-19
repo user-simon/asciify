@@ -1,5 +1,4 @@
 lodepng.*
-*.png
 *.sln
 *.vcxproj
 *.filters
