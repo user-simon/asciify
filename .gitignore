@@ -1,0 +1,12 @@
+lodepng.*
+*.png
+*.sln
+*.vcxproj
+*.filters
+*.user
+/.git
+/.vs
+/Debug
+/Release
+*/Debug
+*/Release
