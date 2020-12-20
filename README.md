@@ -6,13 +6,13 @@
 
 ## asciify is a simple command-line tool to create ascii art from .png files. 
 
-Beyond just the input and output files, you can specify downsampling (pixels per character essentially) and supersampling (higher value -> smoother or blurrier image, depending on how you see it, but the text file takes longer to generate).
+Beyond just the input and output files, you can specify downsampling (pixels per character essentially), supersampling (higher value -> smoother or blurrier image, depending on how you see it, but the text file takes longer to generate), and whether to invert the generated ascii (for dark backgrounds).
 
 ## Usage
 Either launch it as you would any other executable and enter asked-for values or launch it from the command-line as such:
 
 ```
-asciify [input file] [output file] [downsampling] [supersampling]
+asciify [input file] [output file] [downsampling] [supersampling] [OPTIONAL: invert]
 ```
 
 After running the program, the generated text will be saved to the specified `output file` path. Generally I'd recommend playing around with the downsampling and supersampling for a bit to get the desired effect.
