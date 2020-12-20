@@ -32,6 +32,8 @@ This project uses C++17 and the [lvandeve/lodepng](https://github.com/lvandeve/l
 The photograph used in the background of the title image ([img/title.png](img/title.png)) is [by Aióny Haust and features Aidana Sahari](https://astanatimes.com/2019/09/innovative-kazakh-photographer-draws-inspiration-from-art-music-and-connecting-with-his-subjects/).
 
 ## Examples
+These we generated using various settings from various source images and were screenshotted in Notepad++ using the font Consolas:
+
 <p align="center">
-<img src="img/examples.png" width="75%">
+<img src="img/examples.png" width="80%">
 </p>
