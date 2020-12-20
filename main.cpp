@@ -8,7 +8,7 @@ typedef unsigned char uchar;
 typedef unsigned int  uint;
 typedef unsigned int  ulong;
 
-constexpr std::string_view PIXEL_CHARS = " `.:-=;*?+#%@";
+std::string PIXEL_CHARS = "@%#+?*;=-:.` ";
 
 int main(int argc, char* argv[])
 {
@@ -16,22 +16,26 @@ int main(int argc, char* argv[])
 	std::string output;
 	float block_size;
 	uint ss;
+	bool invert = false;
 
 	if (argc == 1)
 	{
-		std::cout << "[input file] [output file] [downsampling] [supersampling]" << std::endl << "> ";
-		std::cin >> filename >> output >> block_size >> ss;
+		std::cout << "[input file] [output file] [downsampling] [supersampling] [invert]" << std::endl << "> ";
+		std::cin >> filename >> output >> block_size >> ss >> invert;
 	}
-	else if (argc < 5)
+	else if (argc >= 5)
 	{
-		ERROR("Not enough arguments");
+		filename	= std::string(argv[1]);
+		output		= std::string(argv[2]);
+		block_size	= std::stof(argv[3]);
+		ss			= std::stoi(argv[4]);
+
+		if (argc == 6)
+			invert = std::stoi(argv[5]);
 	}
 	else
 	{
-		filename = std::string(argv[1]);
-		output = std::string(argv[2]);
-		block_size = std::stof(argv[3]);
-		ss = std::stoi(argv[4]);
+		ERROR("Not enough arguments");
 	}
 
 	std::cout << std::endl;
@@ -42,6 +46,9 @@ int main(int argc, char* argv[])
 	}
 
 	ss = std::min((float)ss, block_size);
+
+	if (invert)
+		std::reverse(PIXEL_CHARS.begin(), PIXEL_CHARS.end());
 
 	// load png bitmap from file
 
