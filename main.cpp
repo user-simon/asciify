@@ -8,7 +8,7 @@ typedef unsigned char uchar;
 typedef unsigned int  uint;
 typedef unsigned int  ulong;
 
-constexpr std::string_view PIXEL_CHARS = "  .:-=;*?+#%@@";
+constexpr std::string_view PIXEL_CHARS = " `.:-=;*?+#%@";
 
 int main(int argc, char* argv[])
 {
@@ -17,17 +17,21 @@ int main(int argc, char* argv[])
 	float block_size;
 	uint ss;
 
-	if (argc >= 5)
-	{
-		filename   = std::string(argv[1]);
-		output     = std::string(argv[2]);
-		block_size = std::stof(argv[3]);
-		ss         = std::stoi(argv[4]);
-	}
-	else
+	if (argc == 1)
 	{
 		std::cout << "[input file] [output file] [downsampling] [supersampling]" << std::endl << "> ";
 		std::cin >> filename >> output >> block_size >> ss;
+	}
+	else if (argc < 5)
+	{
+		ERROR("Not enough arguments");
+	}
+	else
+	{
+		filename = std::string(argv[1]);
+		output = std::string(argv[2]);
+		block_size = std::stof(argv[3]);
+		ss = std::stoi(argv[4]);
 	}
 
 	std::cout << std::endl;
