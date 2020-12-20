@@ -8,20 +8,20 @@ typedef unsigned char uchar;
 typedef unsigned int  uint;
 typedef unsigned int  ulong;
 
-constexpr std::string_view PIXEL_CHARS = " `.:-=;*?+#%@@";
+constexpr std::string_view PIXEL_CHARS = "  .:-=;*?+#%@@";
 
 int main(int argc, char* argv[])
 {
 	std::string filename;
 	std::string output;
-	uint block_size;
+	float block_size;
 	uint ss;
 
 	if (argc >= 5)
 	{
 		filename   = std::string(argv[1]);
 		output     = std::string(argv[2]);
-		block_size = std::stoi(argv[3]);
+		block_size = std::stof(argv[3]);
 		ss         = std::stoi(argv[4]);
 	}
 	else
@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 		ERROR("the smallest value for supersampling is 1 (disabled)");
 	}
 
-	ss = std::min(ss, block_size);
+	ss = std::min((float)ss, block_size);
 
 	// load png bitmap from file
 
@@ -54,9 +54,9 @@ int main(int argc, char* argv[])
 	std::string buf;
 	buf.reserve(2 * ((width * height) / (block_size * block_size)));
 
-	for (uint y = 0; y < height; y += block_size)
+	for (float y = 0; y < height; y += block_size)
 	{
-		for (uint x = 0; x < width; x += block_size)
+		for (float x = 0; x < width; x += block_size)
 		{
 			uint block_lum = 0;
 			uint sampled = 0;
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
 					uint sample_x = x + sample_frac * dx;
 					uint sample_y = y + sample_frac * dy;
 
-					if (sample_x > width || sample_y > height)
+					if (sample_x > width - 4 || sample_y > height - 4)
 						continue;
 
 					const ulong index = (sample_y * width + sample_x) * 4;
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 
 					// https://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
 					// with added alpha channel
-					block_lum += a * (r + r + b + g + g + g) / (6 * 255);
+					block_lum += a * (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 					sampled++;
 				}
 			}
