@@ -20,6 +20,8 @@ After running the program, the generated text will be saved to the specified `ou
 ## Notes
 Not all fonts are created equal. The ["pixel characters" that I have decided on using](https://github.com/usercynical/asciify/blob/main/main.cpp#L11) were "tuned" using Consolas, as such  there could be other fonts in which the order of the characters should be different, though it seems to works well enough for most (read: all) monospaced fonts that I have tried.
 
+Also keep in mind that Notepad++ sometimes stretches the characters at some zoom levels so if you're having issues with the output images looking a bit *wonky*, try some different zoom levels.
+
 :warning: **It absolutely will not work as intended with a non-monospaced font however** :warning:
 (Though admittedly it can lead to some interesting results. Attempt it at your own peril.)
 
