@@ -15,7 +15,7 @@ Either launch it as you would any other executable and enter asked-for values or
 asciify [input file] [output file] [downsampling] [supersampling]
 ```
 
-After running the program, the generated text will be saved to the specified `output file` path.
+After running the program, the generated text will be saved to the specified `output file` path. Generally I'd recommend playing around with the downsampling and supersampling for a bit to get the desired effect.
 
 ## Notes
 Not all fonts are created equal. The ["pixel characters" that I have decided on using](https://github.com/usercynical/asciify/blob/main/main.cpp#L11) were "tuned" using Consolas, as such  there could be other fonts in which the order of the characters should be different, though it seems to works well enough for most (read: all) monospaced fonts that I have tried.
@@ -32,7 +32,7 @@ This project uses C++17 and the [lvandeve/lodepng](https://github.com/lvandeve/l
 The photograph used in the background of the title image ([img/title.png](img/title.png)) is [by Aióny Haust and features Aidana Sahari](https://astanatimes.com/2019/09/innovative-kazakh-photographer-draws-inspiration-from-art-music-and-connecting-with-his-subjects/).
 
 ## Examples
-These we generated using various settings from various source images and were screenshotted in Notepad++ using the font Consolas:
+These were generated using various settings from various source images and were screenshotted in Notepad++ using the font Consolas:
 
 <p align="center">
 <img src="img/examples.png" width="80%">
