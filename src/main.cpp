@@ -20,6 +20,7 @@ static struct
     uint32_t bitmap_h;
 } settings;
 
+// calculates the average luma in the pixel block starting at x, y
 static inline double block_luma(uint32_t x, uint32_t y)
 {
     static const float sample_frac = settings.block_size / settings.ss;
@@ -87,13 +88,13 @@ int main()
     {
         for (float x = 0; x < settings.bitmap_w - settings.block_size; x += settings.block_size)
         {
+            // calculate the block luma
             const double luma = block_luma(x, y);
 
             // get character from block luminosity
             const uint32_t char_index = luma * (pixel_chars.length() - 1);
 
             // add two chars per "pixel" since chars typically have a 2:1 size ratio
-
             output << std::string(2, pixel_chars[char_index]);
         }
         output << '\n';
