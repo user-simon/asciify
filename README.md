@@ -17,7 +17,7 @@ Launch the executable and specify the asked-for parameters (in order). Generally
 
 # Notes
 
-Not all fonts are created equal. The ["pixel characters" that I decided on using]() were "tuned" using Consolas, as such there might be other fonts in which the order of the characters should be different. These characeters seemed to work well enough for most monospaced fonts that I've tried however.
+Not all fonts are created equal. The ["pixel characters" that I decided on using](https://github.com/userexit/asciify/blob/e58d28c4e4e814173fb795570ec77b6a6f8597c0/src/main.cpp#L62) were "tuned" using Consolas, as such there might be other fonts in which the order of the characters should be different. These characeters seemed to work well enough for most monospaced fonts that I've tried however.
 
 Also keep in mind that Notepad++ sometimes stretches the characters at some zoom levels, therefore if you're having issues with the output looking a bit *wonky*, try a different level.
 
