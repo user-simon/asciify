@@ -11,7 +11,7 @@ Beyond just the input and output files, you can specify:
 
 # Usage
 
-If you're on Windows, there is a precompiled binary in Releases, otherwise you have to [compile it yourself](#Building).
+If you're on Windows, there is a precompiled binary in [Releases](https://github.com/userexit/asciify/releases/), otherwise you have to [compile it yourself](#Building).
 
 Launch the executable and specify the asked-for parameters (in order). Generally I'd recommend you play around with the Downsampling and Supersampling variables to get the desired look.
 
