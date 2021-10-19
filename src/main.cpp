@@ -63,40 +63,40 @@ int main()
 
     // get settings from terminal
 
-	std::cout << "[input file] [output file] [downsampling] [supersampling] [invert]" << "\n> ";
-	std::cin >> settings.input_path >> settings.output_path >> settings.block_size >> settings.ss >> settings.invert;
-	
-	if (!settings.ss)
-		ERROR("the smallest value for supersampling is 1 (disabled)");
+    std::cout << "[input file] [output file] [downsampling] [supersampling] [invert]" << "\n> ";
+    std::cin >> settings.input_path >> settings.output_path >> settings.block_size >> settings.ss >> settings.invert;
+    
+    if (!settings.ss)
+        ERROR("the smallest value for supersampling is 1 (disabled)");
 
     settings.ss = std::min((float)settings.ss, settings.block_size);
 
-	if (settings.invert)
-		std::reverse(pixel_chars.begin(), pixel_chars.end());
+    if (settings.invert)
+        std::reverse(pixel_chars.begin(), pixel_chars.end());
 
-	// load png bitmap from file
+    // load png bitmap from file
     
-	if (lodepng::decode(settings.bitmap, settings.bitmap_w, settings.bitmap_h, settings.input_path.string()) != 0)
-		ERROR("couldn't load file");
+    if (lodepng::decode(settings.bitmap, settings.bitmap_w, settings.bitmap_h, settings.input_path.string()) != 0)
+        ERROR("couldn't load file");
 
     std::ofstream output(settings.output_path);
 
-	// calculate ascii characters for each block in image and write it to output
+    // calculate ascii characters for each block in image and write it to output
 
-	for (float y = 0; y < settings.bitmap_h - settings.block_size; y += settings.block_size)
-	{
-		for (float x = 0; x < settings.bitmap_w - settings.block_size; x += settings.block_size)
-		{
+    for (float y = 0; y < settings.bitmap_h - settings.block_size; y += settings.block_size)
+    {
+        for (float x = 0; x < settings.bitmap_w - settings.block_size; x += settings.block_size)
+        {
             const double luma = block_luma(x, y);
 
-			// get character from block luminosity
-			const uint32_t char_index = luma * (pixel_chars.length() - 1);
+            // get character from block luminosity
+            const uint32_t char_index = luma * (pixel_chars.length() - 1);
 
-			// add two chars per "pixel" since chars typically have a 2:1 size ratio
+            // add two chars per "pixel" since chars typically have a 2:1 size ratio
 
             output << std::string(2, pixel_chars[char_index]);
-		}
-		output << '\n';
-	}
-	std::cout << "Image saved as " << settings.output_path;
+        }
+        output << '\n';
+    }
+    std::cout << "Image saved as " << settings.output_path;
 }
