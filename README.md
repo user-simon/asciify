@@ -24,18 +24,52 @@ Also keep in mind that Notepad++ sometimes stretches the characters at some zoom
 **It absolutely will not work as intended with a non-monospaced font however**
 (Though admittedly it can lead to some interesting results. Attempt it at your own peril.)
 
-## Building
+# Building
 
-Install [premake](https://premake.github.io/download) and use the provided [`premake5.lua`](premake5.lua) file to generate a project. If you want to generate a Visual Studio project you can use the provided [`make_vs.bat`](make_vs.bat) file. 
+Use the provided [CMakeLists.txt](CMakeLists.txt) file to generate a project:
+```
+mkdir build
+cd build
+cmake ../
+```
 
-## Credit
-[lodepng](https://github.com/lvandeve/lodepng) by [lvandeve](https://github.com/lvandeve) is used to load bitmaps from .png files.
+# Example run
 
-The photograph used in the background of the title image ([img/title.png](img/title.png)) is [by Aióny Haust and features Aidana Sahari](https://astanatimes.com/2019/09/innovative-kazakh-photographer-draws-inspiration-from-art-music-and-connecting-with-his-subjects/).
+Running asciify with the following file structure and settings:
+```
+asciify
+  ├── asciify.exe
+  └── sadge.png
+```
 
-## Examples
+```
+[input file] [output file] [downsampling] [supersampling] [invert]
+> sadge.png out.txt 10 5 1
+```
+
+... results in the following file structure (note the addition of `out.txt`):
+
+```
+asciify
+  ├── asciify.exe
+  ├── out.txt
+  └── sadge.png
+```
+
+where `out.txt` contains:
+
+<p align="center">
+<img src="img/sadge.png" width="50%">
+</p>
+
+# Images
 These images were generated using `invert=1` and with various Downsampling and Supersampling values. They were screenshot in Notepad++ with the Obsidian theme and with the font Consolas.
 
 <p align="center">
 <img src="img/examples.png" width="80%">
 </p>
+
+# Credit
+[lodepng](https://github.com/lvandeve/lodepng) by [lvandeve](https://github.com/lvandeve) is used to load bitmaps from .png files.
+
+The photograph used in the background of the title image ([img/title.png](img/title.png)) is [by Aióny Haust and features Aidana Sahari](https://astanatimes.com/2019/09/innovative-kazakh-photographer-draws-inspiration-from-art-music-and-connecting-with-his-subjects/).
