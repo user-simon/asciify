@@ -3,7 +3,7 @@
 #include <filesystem>
 #include <cassert>
 #include <cstdint>
-#include <lodepng/lodepng.h>
+#include <lodepng.h>
 
 #define ERROR(str) { std::cout << "[ERROR] " << str; return -1; }
 

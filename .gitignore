@@ -1,7 +1,3 @@
-*.sln
-*.vcxproj
-*.filters
-*.user
-/.build
 /.git
 /.vs
+/build
