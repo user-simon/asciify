@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstdint>
 #include <lodepng.h>
+#include <algorithm>
 
 #define ERROR(str) { std::cout << "[ERROR] " << str; return -1; }
 
